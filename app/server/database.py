@@ -1,7 +1,8 @@
-import motor.motor_asyncio
-from bson.objectid import ObjectId
 from decouple import config
+from bson.objectid import ObjectId
+import motor.motor_asyncio
 
+#MONGO_DETAILS = "mongodb://localhost:27017"
 MONGO_DETAILS = config('MONGO_DETAILS') # read environment variable.
 
 client = motor.motor_asyncio.AsyncIOMotorClient(MONGO_DETAILS)
@@ -24,8 +25,6 @@ def student_helper(student) -> dict:
         "GPA": student["gpa"],
     }
 
-
-# crud operations
 
 # Retrieve all students present in the database
 async def retrieve_students():
